@@ -2,7 +2,13 @@
 definePageMeta({
   layout: 'default',
   name: 'HomePage',
-  redirect: '/welcome',
+})
+
+defineRouteRules({
+  headers: {
+    'Cross-Origin-Opener-Policy': 'same-origin',
+    'Cross-Origin-Embedder-Policy': 'require-corp',
+  },
 })
 
 useHead({

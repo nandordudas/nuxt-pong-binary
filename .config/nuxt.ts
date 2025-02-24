@@ -27,4 +27,20 @@ export default defineNuxtConfig({
       'data-version': import.meta.env.npm_package_version,
     },
   },
+
+  modules: ['@nuxt/ui-pro'],
+
+  css: ['~/assets/css/main.css'],
+
+  vite: {
+    server: {
+      headers: {
+        'Cross-Origin-Opener-Policy': 'same-origin',
+        'Cross-Origin-Embedder-Policy': 'require-corp',
+      },
+    },
+    worker: {
+      format: 'es',
+    },
+  },
 })

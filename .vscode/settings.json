@@ -60,6 +60,12 @@
   // #endregion
 
   // #region VS Code General
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
   "window.title": "${dirty}${activeEditorMedium}",
   "window.titleSeparator": " · ",
   // #endregion

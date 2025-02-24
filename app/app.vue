@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <UApp>
     <NuxtRouteAnnouncer />
     <NuxtLoadingIndicator />
 
     <NuxtLayout>
       <NuxtPage :page-key="route => route.fullPath" />
     </NuxtLayout>
-  </div>
+  </UApp>
 </template>
