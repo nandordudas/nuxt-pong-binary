@@ -17,5 +17,7 @@ useHead({
 </script>
 
 <template>
-  <CanvasWrapper />
+  <div class="grid place-items-center h-screen">
+    <CanvasWrapper />
+  </div>
 </template>

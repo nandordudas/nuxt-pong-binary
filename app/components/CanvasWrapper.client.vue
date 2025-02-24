@@ -1,20 +1,29 @@
 <script setup lang="ts">
 import type { RenderWorkerImpl } from '~/workers/render/render.impl'
-import { wrap } from 'comlink'
+import { transfer } from 'comlink'
 import RenderWorker from '~/workers/render/render.worker?worker'
 
-async function useRenderWorker(WorkerType: new (options?: { name?: string }) => Worker) {
-  const WorkerClass = wrap<typeof RenderWorkerImpl>(new WorkerType())
-  const workerInstance = await new WorkerClass()
+const renderWorker = await useWorker<typeof RenderWorkerImpl>(RenderWorker)
+const canvasRef = useTemplateRef('canvasRef')
 
-  return workerInstance
-}
+watch(
+  canvasRef,
+  async (value) => {
+    if (value) {
+      const offscreen = value.transferControlToOffscreen()
 
-const renderWorker = await useRenderWorker(RenderWorker)
-
-await renderWorker.init()
+      await renderWorker.init(transfer(offscreen, [offscreen]))
+    }
+  },
+  { once: true },
+)
 </script>
 
 <template>
-  <div>yeah</div>
+  <canvas
+    ref="canvasRef"
+    width="800"
+    height="450"
+    class="rounded aspect-video w-[800px] h-[450px]"
+  />
 </template>
