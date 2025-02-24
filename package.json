@@ -19,6 +19,7 @@
   "dependencies": {
     "@antfu/eslint-config": "^4.3.0",
     "@nuxt/ui-pro": "3.0.0-alpha.13",
+    "comlink": "^4.4.2",
     "eslint": "^9.21.0",
     "eslint-plugin-format": "^1.0.1",
     "nuxt": "^3.15.4",
